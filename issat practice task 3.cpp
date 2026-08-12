@@ -1,5 +1,4 @@
-// issat practice task 3.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+//Order management system
 
 #include <iostream>
 #include <math.h>
@@ -17,7 +16,7 @@ float TotalCost[50];
 int main()
 {
 	do {
-		cout<< "\n---Order management system---" << endl;
+		cout<< "\n---> Order management system <---" << endl;
 		cout<< "1. Add a new order" << endl;
 		cout<< "2. Display all orders" << endl;
 		cout << "3. Find order by order ID" << endl;
@@ -48,43 +47,53 @@ int main()
 			}
 		}
 		if (choice == 2) {
-			cout << "\n---All Orders---" << endl;
-			for (int orders = 0; orders < counter; orders++) {
-				cout << "Order ID: " << OrderID[orders] << endl;
-				cout << "Customer Name: " << CustomerName[orders] << endl;
-				cout << "Number of Magwinyas: " << NumOfMagwinyas[orders] << endl;
-				cout << "Total Cost: " << TotalCost[orders] << endl;
+			cout << "\n---> All Orders <---" << endl;
+			for (int Orders = 0; Orders < counter; Orders++) {
+				cout << "Order ID: " << OrderID[Orders] << endl;
+				cout << "Customer Name: " << CustomerName[Orders] << endl;
+				cout << "Number of Magwinyas: " << NumOfMagwinyas[Orders] << endl;
+				cout << "Total Cost: " << TotalCost[Orders] << endl;
 				cout << "-------------------------" << endl;
 			}
 		}
 		if (choice == 3) {
-			string searchID;
-			int found = 0;
+			string SearchID;
+			int Found = 0;
 
 			cout << "Enter order ID to search: ";
-			cin >> searchID;
+			cin >> SearchID;
 
-			for (int orders = 0; orders < counter; orders++)
+			for (int Orders = 0; Orders < counter; Orders++)
 			{
-				if (OrderID[orders] == searchID)
+				if (OrderID[Orders] == SearchID)
 				{
-					cout << "Order ID: " << OrderID[orders] << endl;
-					cout << "Customer Name: " << CustomerName[orders] << endl;
-					cout << "Number of Magwinyas: " << NumOfMagwinyas[orders] << endl;
-					cout << "Total Cost: " << TotalCost[orders] << endl;
+					cout << "Order ID: " << OrderID[Orders] << endl;
+					cout << "Customer Name: " << CustomerName[Orders] << endl;
+					cout << "Number of Magwinyas: " << NumOfMagwinyas[Orders] << endl;
+					cout << "Total Cost: " << TotalCost[Orders] << endl;
 
-					found = 1;
+					Found = 1;
 					break;
 				}
 			}
 
-			if (found == 0)
+			if (Found == 0)
 			{
 				cout << "Order not found." << endl;
 			}
+		}
+		if (choice == 4){
+			float TotalRevenue = 0;
+
+			for (int Orders = 0; Orders < counter; Orders++)
+			{
+				TotalRevenue = TotalRevenue + TotalCost[Orders];
+			}
+
+			cout << "\n---> Total Revenue <---" << endl;
+			cout << "Total revenue: R" << TotalRevenue << endl;
 		}
 	} while (choice != 5);
 
 	return 0;
 }
-
